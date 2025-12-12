@@ -1,0 +1,25 @@
+<div>
+    <form>
+        <div>
+            <label for="username">نام کاربری</label>
+            <input [(ngModel)]="loginform.username" id="username" name="username" type="text" placeholder="نام کاربری را وراد کنید">
+        </div>
+        <div>
+            <label for="password">کلمه عبور</label>
+            <input [(ngModel)]="loginform.password" id="password" name="password" type="password" placeholder="کلمه عبور را وراد کنید">
+               </div>
+               <div>
+                <input [(ngModel)]="loginform.keepme" id="keepme" name="keepme" type="checkbox">
+                <label for="keepme">من را به خاطر بسپار</label>
+               </div>
+               <div>
+                <button type="submit">ورود</button>
+               </div>
+               @if(message!=''){
+                <div>
+                    {{message}}
+                
+                </div>
+               }
+    </form>
+</div>

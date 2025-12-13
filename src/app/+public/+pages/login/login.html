@@ -1,5 +1,5 @@
 <div>
-    <form>
+    <form (ngSubmit)="check()">
         <div>
             <label for="username">نام کاربری</label>
             <input [(ngModel)]="loginform.username" id="username" name="username" type="text" placeholder="نام کاربری را وراد کنید">
@@ -13,7 +13,7 @@
                 <label for="keepme">من را به خاطر بسپار</label>
                </div>
                <div>
-                <button type="submit">ورود</button>
+                <button [disabled]="loginform.username=='' || loginform.password=='' " type="submit">ورود</button>
                </div>
                @if(message!=''){
                 <div>

@@ -1,0 +1,142 @@
+$main: #9d4edd;
+$accent: #ff8fab;
+$dark: #2b2b2b;
+$glass: rgba(255, 255, 255, 0.25);
+
+:host {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top right, #fbc2eb, transparent 40%),
+    radial-gradient(circle at bottom left, #a18cd1, transparent 40%),
+    linear-gradient(135deg, #cdb4db, #ffc8dd);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* کارت لاگین */
+form {
+  width: 380px;
+  padding: 2.2rem;
+  border-radius: 22px;
+  background: $glass;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  direction: rtl;
+  animation: fadeUp 0.8s ease;
+}
+
+/* فاصله آیتم‌ها */
+form > div {
+  margin-bottom: 1.4rem;
+}
+
+/* لیبل */
+label {
+  font-size: 0.8rem;
+  color: $dark;
+  opacity: 0.85;
+  margin-bottom: 0.3rem;
+  display: inline-block;
+}
+
+/* اینپوت‌ها */
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  outline: none;
+  transition: 0.4s;
+
+  &:focus {
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba($main, 0.25);
+    transform: translateY(-2px);
+  }
+}
+
+/* چک‌باکس */
+input[type='checkbox'] {
+  accent-color: $main;
+  transform: scale(1.1);
+  margin-left: 0.4rem;
+}
+
+/* دکمه */
+button {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 18px;
+  border: none;
+  background: linear-gradient(135deg, $main, $accent);
+  color: #fff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,.6), transparent 60%);
+    opacity: 0;
+    transition: 0.4s;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba($main, 0.4);
+  }
+
+  &:disabled {
+    background: linear-gradient(135deg, #bbb, #ddd);
+    cursor: not-allowed;
+  }
+}
+
+/* پیام لاگین */
+form div:last-child {
+  text-align: center;
+  font-size: 0.85rem;
+  color: crimson;
+  animation: shake 0.35s ease;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* ریسپانسیو */
+@media (max-width: 420px) {
+  form {
+    width: 92%;
+    padding: 1.8rem;
+  }
+}

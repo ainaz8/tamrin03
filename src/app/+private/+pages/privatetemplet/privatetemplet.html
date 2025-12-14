@@ -1,11 +1,11 @@
 <div class="sidebar">
-    <a href="">داشبورد</a>
-    <a href="">کتاب ها</a>
-     <a href="">اعضا</a>
-     <a href="">امانات</a>
-     <a href="">گزارشات</a>
-     <a href="">خروج</a>
+    <a ruoterlink="dashboard">داشبورد</a>
+    <a ruoterlink="books">کتاب ها</a>
+     <a ruoterlink="members">اعضا</a>
+     <a ruoterlink="borrows">امانات</a>
+     <a ruoterlink="reports">گزارشات</a>
+     <a (click)="logoff()" >خروج</a>
 </div>
 <div class="content">
-    این یک ازمایش است
+<router-outlet></router-outlet>
 </div>

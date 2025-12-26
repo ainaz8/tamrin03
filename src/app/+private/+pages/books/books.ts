@@ -1,21 +1,41 @@
-import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, inject, OnInit } from '@angular/core';
+import { Booksservice } from './booksservice';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-books',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './books.html',
   styleUrl: './books.scss',
 })
-export class Books {
-data:bookitem[]=[
-  {id:1,title:'من پیش از تو ',writer:'جوجومویز',publisher:'ناشر بوک' ,price:5000},
-  {id:2,title:'من پس  از تو ',writer:'جوجومویز',publisher:'ناشر بوک' ,price:6000},
-  {id:3,title:'باز هم من ',writer:'جوجومویز',publisher:'ناشر بوک' ,price:7000},
-  {id:4,title:'شبح اپرا ',writer:'جوجومویز',publisher:'ناشر بوک' ,price:8000},
-  {id:5,title:'جهان کوچک من ',writer:'جوجومویز',publisher:'ناشر بوک' ,price:9000},
-]
-
+export class Books implements OnInit {
+  booksservice=inject(Booksservice);
+  data:bookitem[]=[];
+  action:string='list';
+  item:bookitem={
+    id:0,
+    title:'',
+    writer:'',
+    publisher:'',
+    price:0
+  }
+  ngOnInit(): void {
+    this.refreshdata();
+  }
+  refreshdata(){
+    this.data=this.booksservice.list();
+  }
+  add() {
+    this.action='add';
+   
+  }
+  save() {
+  this.booksservice.add(this.item);
+  this.refreshdata();
+  }
+cancel() {
+this.action='list'
+}
 }
 export interface bookitem{
   id:number;

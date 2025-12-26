@@ -1,29 +1,138 @@
-table{
-    width: 100%;
-    border-collapse: collapse;
-    tr{
-        border-bottom: 1px solid gray;
-    }
-    tr:nth-of-type(2n+1){
-        background-color: aqua;
-    }
-    td,th{
-        text-align: right;
-        padding: 0.3em;
-    }
-    th{
-        background-color: rgb(200, 9, 105);
-        color: white;
-    }
-    td:last-of-type{
-        text-align: right;
-    }
+/* فونت کلی */
+* {
+  box-sizing: border-box;
+  
 }
-button{
-    background-color: rgb(180, 110, 124);
-    color: white;
-    padding: 0.2em 0.4em;
-    border: none;
-   border-radius: 0.3em;
-   margin: 0.2em ;
+
+/* دکمه افزودن */
+div > button {
+  background: linear-gradient(135deg, #9580f3, #5b3da1);
+  color: #fff;
+  padding: 0.6em 1.2em;
+  border-radius: 0.6em;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  margin-bottom: 1em;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 38, 136, 0.3);
+  }
+}
+
+/* جدول */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #b24747;
+  border-radius: 1em;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  thead {
+    background: linear-gradient(135deg, #5e1212, #b61c1c);
+  }
+
+  th {
+    color: #fff;
+    padding: 0.8em;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  td {
+    padding: 0.7em;
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  tr {
+    transition: 0.25s;
+  }
+
+  tbody tr:hover {
+    background-color: #f3f0ff;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #faf8ff;
+  }
+
+  td:last-of-type {
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+/* دکمه‌های داخل جدول */
+table button {
+  padding: 0.35em 0.7em;
+  font-size: 0.8rem;
+  border-radius: 0.5em;
+  margin: 0 0.2em;
+  transition: 0.3s;
+}
+
+/* ویرایش */
+table button:first-child {
+  background-color: #d17c7c;
+
+  &:hover {
+    background-color: #bc1616;
+  }
+}
+
+/* حذف */
+table button:last-child {
+  background-color: #cfb4b4;
+
+  &:hover {
+    background-color: #ababab;
+  }
+}
+
+/* فرم */
+form {
+  max-width: 420px;
+  margin: 3em auto;
+  background: #9d5fd0;
+  padding: 2em;
+  border-radius: 1.2em;
+  box-shadow: 0 12px 30px rgba(67, 38, 136, 0.15);
+
+  div {
+    margin-bottom: 1em;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.7em;
+    border-radius: 0.6em;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    transition: 0.3s;
+
+    &:focus {
+      border-color: #7b5cff;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(123, 92, 255, 0.15);
+    }
+  }
+
+  button {
+    background: linear-gradient(135deg, #7b5cff, #432688);
+    padding: 0.6em 1.4em;
+    font-size: 0.9rem;
+    border-radius: 0.6em;
+  }
+
+  button[type="button"] {
+    background: #999;
+
+    &:hover {
+      background: #777;
+    }
+  }
 }

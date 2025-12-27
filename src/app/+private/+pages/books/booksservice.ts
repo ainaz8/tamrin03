@@ -18,5 +18,15 @@ export class Booksservice {
       list(){ //read
         return [...this.data];
       }
+      update(book:bookitem){ //update
+const index=this.data.findIndex(b=>b.id==book.id);
+if(index!=-1){
+  this.data[index].id=book.id;
+  this.data[index].title=book.title;
+  this.data[index].writer=book.writer;
+  this.data[index].publisher=book.publisher;
+  this.data[index].price=book.price;
+}
+      }
   
 }

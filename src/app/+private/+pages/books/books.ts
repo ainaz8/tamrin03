@@ -18,7 +18,7 @@ export class Books implements OnInit {
     writer:'',
     publisher:'',
     price:0
-  }
+  };
   ngOnInit(): void {
     this.refreshdata();
   }
@@ -26,19 +26,36 @@ export class Books implements OnInit {
     this.data=this.booksservice.list();
   }
   add() {
+    this.item={
+      id:0,
+      title:'',
+      writer:'',
+      publisher:'',
+      price:0
+    };
     this.action='add';
-   
+    
+  }
+  edit(book:bookitem) {
+    this.item={...book}
+this.action='edit';
   }
   save() {
-  this.booksservice.add(this.item);
-  this.refreshdata();
+    if(this.action=='add'){
+      this.booksservice.add(this.item);
+         }
+    else if (this.action=='edit') {
+  this.booksservice.update(this.item);
   }
+   this.refreshdata();
+            this.action='list';
+}
 cancel() {
 this.action='list'
 }
 }
 export interface bookitem{
-  id:number;
+  id?:number;
   title:string;
   writer:string;
   publisher:string;

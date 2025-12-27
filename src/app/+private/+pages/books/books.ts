@@ -38,7 +38,11 @@ export class Books implements OnInit {
   }
   edit(book:bookitem) {
     this.item={...book}
-this.action='edit';
+    this.action='edit';
+  }
+  remove(book:bookitem) {
+this.item={...book};
+this.action='remove';
   }
   save() {
     if(this.action=='add'){
@@ -46,6 +50,9 @@ this.action='edit';
          }
     else if (this.action=='edit') {
   this.booksservice.update(this.item);
+  }
+  else if(this.action=='remove'){
+    this.booksservice.remove(this.item);
   }
    this.refreshdata();
             this.action='list';

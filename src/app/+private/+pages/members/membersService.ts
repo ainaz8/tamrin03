@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { membersitem } from './members';
+import { Members, membersitem } from './members';
+import { bookitem } from '../books/books';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +20,18 @@ export class Memberservice {
     list(){
       return[...this.data];
     }
-    update(){
-
+    update(members:membersitem){
+const index=this.data.findIndex(b=>b.id==members.id);
+if(index!=-1){
+  this.data[index].id=members.id;
+  this.data[index].name=members.name;
+  this.data[index].family=members.family;
+  this.data[index].kodmeli=members.kodmeli;
+  this.data[index].tel=members.tel;
+}
     }
-    remove(){
-      
+    remove(members:membersitem){
+      this.data=this.data.filter(m=>m.id!=members.id);
     }
 
 }

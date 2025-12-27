@@ -24,8 +24,8 @@
                     <td>{{member.kodmeli}}</td>
                     <td>{{member.tel}}</td>
                     <td>
-                        <button>ویرایش</button>
-                        <button>حذف</button>
+                        <button (click)="edit(member)">ویرایش</button>
+                        <button (click)="remove(member)">حذف</button>
                     </td>
                 </tr>
             }
@@ -33,22 +33,27 @@
     </table>
 }
 @else {
-
+ @if (action == 'remove') {
+<div class="alert">
+آیا از حذف این کتاب اطمینان دارید؟
+ </div>
+ }
     <form (ngSubmit)="save()">
-        <div>
-            <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+    
+        <div >
+            <input [class.makhfi]="action=='edit'" [disabled]="action=='edit' || action=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
         </div>
         <div>
-            <input [(ngModel)]="item.name" id="name" name="name" type="text" placeholder="نام">
+            <input [disabled]=" action=='remove'" [(ngModel)]="item.name" id="name" name="name" type="text" placeholder="نام">
         </div>
         <div>
-            <input [(ngModel)]="item.family" id="family" name="family" type="text" placeholder="نام خانوادگی">
+            <input [disabled]=" action=='remove'" [(ngModel)]="item.family" id="family" name="family" type="text" placeholder="نام خانوادگی">
         </div>
         <div>
-            <input [(ngModel)]="item.kodmeli" id="kodmeli" name="kodmeli" type="number" placeholder="کد ملی">
+            <input [disabled]=" action=='remove'" [(ngModel)]="item.kodmeli" id="kodmeli" name="kodmeli" type="number" placeholder="کد ملی">
         </div>
         <div>
-            <input [(ngModel)]="item.tel" id="tel" name="tel" type="number" placeholder="تلفن">
+            <input [disabled]=" action=='remove'" [(ngModel)]="item.tel" id="tel" name="tel" type="number" placeholder="تلفن">
         </div>
         <div>
             <button type="submit">تایید</button>

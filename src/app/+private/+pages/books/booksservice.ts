@@ -28,5 +28,9 @@ if(index!=-1){
   this.data[index].price=book.price;
 }
       }
+ remove(book:bookitem){ //remove
+this.data=this.data.filter(m=>m.id!=book.id)
+ }
+      }
   
-}
+
